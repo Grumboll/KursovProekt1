@@ -16,5 +16,6 @@ namespace KursovProekt1
         {
             InitializeComponent();
         }
+
     }
 }
