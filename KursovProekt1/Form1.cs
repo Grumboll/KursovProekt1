@@ -12,10 +12,29 @@ namespace KursovProekt1
 {
     public partial class Form1 : Form
     {
+        private DbConn db;
+
         public Form1()
         {
             InitializeComponent();
+            db = new DbConn();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DateTime dateTime = dateTimePicker1.Value;
+
+            if (dateTime == null)
+            {
+                dateTime = DateTime.Now;
+            }
+
+            dataGridView1.DataSource = db.displayData(dateTime.ToString("G"));
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
