@@ -12,12 +12,13 @@ namespace KursovProekt1
 {
     public partial class Spravka : Form
     {
-        private DbConn db;
+        private DbConn db = DbConn.getInstance();
 
         public Spravka()
         {
             InitializeComponent();
-            db = new DbConn();
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = "dd.MM.yyyy HH:mm:ss";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -31,11 +32,5 @@ namespace KursovProekt1
 
             dataGridView1.DataSource = db.displayData(dateTime.ToString("G"));
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

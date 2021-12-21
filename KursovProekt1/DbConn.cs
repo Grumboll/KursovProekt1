@@ -4,15 +4,30 @@ using System.Configuration;
 using System.Data;
 using System.Threading.Tasks;
 using System.Data.OleDb;
+using System.IO;
 
 namespace KursovProekt1
 {
     internal class DbConn
     {
+        static DbConn instance;
         OleDbConnection oleDbConnection = new OleDbConnection();
+
+        public static DbConn getInstance()
+        {
+            if (instance == null)
+            {
+                instance = new DbConn();
+            }
+            return instance;
+        }
+
 
         public DbConn()
         {
+            string path = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+            AppDomain.CurrentDomain.SetData("DataDirectory", path);
+
             ConnectionStringSettingsCollection settings = ConfigurationManager.ConnectionStrings;
             string connectionString = "";
 
@@ -25,7 +40,6 @@ namespace KursovProekt1
             }
 
             oleDbConnection.ConnectionString = connectionString;
-
         }
 
         public DataTable displayData(string dateTime)
@@ -93,12 +107,11 @@ namespace KursovProekt1
             return dt;
         }
 
-        public void insertCar(string regNumber, string mark, int seats, bool luggage, string driver )
+        public void insertCar(string regNumber, string mark, int seats, bool luggage, string driver)
         {
-
             oleDbConnection.Open();
 
-            string query = "INSERT INTO Cars ([RegNomer], [Mark], [Seats], [Luggage], [Driver]) Values(?, ?, ?, ?, ?) ";
+            string query = "INSERT INTO Cars (RegNomer, Mark, Seats, Luggage, Driver) VALUES (@RegNomer, @Mark, @Seats, @Luggage, @Driver)";
             OleDbCommand cmd = oleDbConnection.CreateCommand();
             cmd.CommandText = query;
             cmd.Parameters.AddWithValue("@RegNomer", regNumber);
@@ -109,7 +122,23 @@ namespace KursovProekt1
             cmd.Connection = oleDbConnection;
             cmd.ExecuteNonQuery();
             oleDbConnection.Close();
+        }
 
+        public void insertOrder(int carId, string address, int distance, int fare, string orderTime)
+        {
+            oleDbConnection.Open();
+
+            string query = "INSERT INTO Orders (CarsID, Address, OrderTime, Distance, Fare) VALUES (@carId, @address, @orderTime, @distance, @fare)";
+            OleDbCommand cmd = oleDbConnection.CreateCommand();
+            cmd.CommandText = query;
+            cmd.Parameters.AddWithValue("@carId", carId);
+            cmd.Parameters.AddWithValue("@address", address);
+            cmd.Parameters.Add("@orderTime", OleDbType.Date).Value = orderTime;
+            cmd.Parameters.AddWithValue("@distance", distance);
+            cmd.Parameters.AddWithValue("@fare", fare);
+            cmd.Connection = oleDbConnection;
+            cmd.ExecuteNonQuery();
+            oleDbConnection.Close();
         }
     }
 }

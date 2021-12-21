@@ -12,11 +12,16 @@ namespace KursovProekt1
 {
     public partial class frmCars : Form
     {
-        private DbConn db;
+        private DbConn db = DbConn.getInstance();
+        private Main main;
         public frmCars()
         {
             InitializeComponent();
-            db = new DbConn();
+        }
+
+        public void setMain(Main main)
+        {
+            this.main = main;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -27,6 +32,8 @@ namespace KursovProekt1
             bool luggage = checkBox1.Checked;
             string driver = textBox5.Text;
             db.insertCar(regNumber, mark, seats, luggage, driver);
+            main.reloadCars();
+            this.Close();
         }
     }
 }

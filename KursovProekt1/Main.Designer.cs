@@ -83,6 +83,7 @@
             this.поръчкаToolStripMenuItem.Name = "поръчкаToolStripMenuItem";
             this.поръчкаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.поръчкаToolStripMenuItem.Text = "Поръчка";
+            this.поръчкаToolStripMenuItem.Click += new System.EventHandler(this.поръчкаToolStripMenuItem_Click);
             // 
             // справкиToolStripMenuItem
             // 

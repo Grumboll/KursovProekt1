@@ -13,16 +13,15 @@ namespace KursovProekt1
 {
     public partial class Main : Form
     {
-        private DbConn db;
+        private DbConn db = DbConn.getInstance();
+        private int id;
         public Main()
         {
             InitializeComponent();
-            db = new DbConn();
         }
         private void Main_Load(object sender, EventArgs e)
         {
-            
-            dataGridView1.DataSource = db.displayCars();
+            reloadCars();
         }
 
         private void справкиToolStripMenuItem_Click(object sender, EventArgs e)
@@ -35,7 +34,8 @@ namespace KursovProekt1
         {
             if (dataGridView1.Rows[e.RowIndex].Cells[0].Value != null)
             {
-                dataGridView2.DataSource = db.displayOrders(Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()));    
+                id = Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+                reloadOrders();
             }
         }
 
@@ -47,7 +47,26 @@ namespace KursovProekt1
         private void колаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmCars frm = new frmCars();
+            frm.setMain(this);
             frm.ShowDialog();
         }
+        private void поръчкаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmOrders frm = new frmOrders();
+            frm.setMain(this);
+            frm.setId(id);
+            frm.ShowDialog();
+        }
+
+        public void reloadCars()
+        {
+            dataGridView1.DataSource = db.displayCars();
+        }
+
+        public void reloadOrders()
+        {
+            dataGridView2.DataSource = db.displayOrders(id);
+        }
+
     }
 }

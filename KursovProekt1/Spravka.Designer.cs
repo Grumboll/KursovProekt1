@@ -77,7 +77,6 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Name = "Spravka";
             this.Text = "ТаксиМакси";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kursovProekt11DataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.carsBindingSource)).EndInit();
