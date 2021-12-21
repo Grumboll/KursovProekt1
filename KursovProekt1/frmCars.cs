@@ -10,11 +10,10 @@ using System.Windows.Forms;
 
 namespace KursovProekt1
 {
-    public partial class Form1 : Form
+    public partial class frmCars : Form
     {
         private DbConn db;
-
-        public Form1()
+        public frmCars()
         {
             InitializeComponent();
             db = new DbConn();
@@ -22,19 +21,12 @@ namespace KursovProekt1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DateTime dateTime = dateTimePicker1.Value;
-
-            if (dateTime == null)
-            {
-                dateTime = DateTime.Now;
-            }
-
-            dataGridView1.DataSource = db.displayData(dateTime.ToString("G"));
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
+            string regNumber = textBox1.Text;
+            string mark = textBox2.Text;
+            int seats = Int32.Parse(textBox3.Text);
+            bool luggage = checkBox1.Checked;
+            string driver = textBox5.Text;
+            db.insertCar(regNumber, mark, seats, luggage, driver);
         }
     }
 }
