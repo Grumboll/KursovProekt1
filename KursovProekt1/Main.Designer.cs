@@ -37,6 +37,7 @@
             this.изходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -68,34 +69,34 @@
             this.колаToolStripMenuItem,
             this.поръчкаToolStripMenuItem});
             this.въвежданеToolStripMenuItem.Name = "въвежданеToolStripMenuItem";
-            this.въвежданеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.въвежданеToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.въвежданеToolStripMenuItem.Text = "Въвеждане";
             // 
             // колаToolStripMenuItem
             // 
             this.колаToolStripMenuItem.Name = "колаToolStripMenuItem";
-            this.колаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.колаToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.колаToolStripMenuItem.Text = "Такси";
             this.колаToolStripMenuItem.Click += new System.EventHandler(this.колаToolStripMenuItem_Click);
             // 
             // поръчкаToolStripMenuItem
             // 
             this.поръчкаToolStripMenuItem.Name = "поръчкаToolStripMenuItem";
-            this.поръчкаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.поръчкаToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.поръчкаToolStripMenuItem.Text = "Поръчка";
             this.поръчкаToolStripMenuItem.Click += new System.EventHandler(this.поръчкаToolStripMenuItem_Click);
             // 
             // справкиToolStripMenuItem
             // 
             this.справкиToolStripMenuItem.Name = "справкиToolStripMenuItem";
-            this.справкиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.справкиToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.справкиToolStripMenuItem.Text = "Справка";
             this.справкиToolStripMenuItem.Click += new System.EventHandler(this.справкиToolStripMenuItem_Click);
             // 
             // изходToolStripMenuItem
             // 
             this.изходToolStripMenuItem.Name = "изходToolStripMenuItem";
-            this.изходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.изходToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.изходToolStripMenuItem.Text = "Изход";
             this.изходToolStripMenuItem.Click += new System.EventHandler(this.изходToolStripMenuItem_Click_1);
             // 
@@ -116,11 +117,22 @@
             this.dataGridView2.Size = new System.Drawing.Size(651, 216);
             this.dataGridView2.TabIndex = 2;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(569, 241);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 33);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Запиши";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(675, 520);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
@@ -148,5 +160,6 @@
         private System.Windows.Forms.ToolStripMenuItem изходToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button button1;
     }
 }

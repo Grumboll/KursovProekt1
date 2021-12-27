@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace KursovProekt1
 {
@@ -68,5 +69,20 @@ namespace KursovProekt1
             dataGridView2.DataSource = db.displayOrders(id);
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            StringBuilder text = new StringBuilder();
+            for(int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                DataGridViewRow row = dataGridView1.Rows[i];
+                foreach(DataGridViewCell cell in row.Cells)
+                {
+                    text.Append(cell.Value.ToString() + " ");
+                }
+                text.AppendLine();
+            }
+
+            File.WriteAllText("Table.txt", text.ToString());
+        }
     }
 }
